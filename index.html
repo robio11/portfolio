@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rachana Meena | Freelance Full Stack Developer</title>
+  <!-- Modern Font: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          },
+          colors: {
+            dark: '#0f172a',
+            darker: '#0b1120',
+            primary: '#3b82f6',
+            secondary: '#10b981',
+            accent1: '#8b5cf6',
+            accent2: '#06b6d4',
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'blob': 'blob 7s infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            blob: {
+              '0%': { transform: 'translate(0px, 0px) scale(1)' },
+              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+              '100%': { transform: 'translate(0px, 0px) scale(1)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0b1120;
+      background-image:
+        radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+    }
+
+    .text-gradient {
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: linear-gradient(to right, #60a5fa, #a78bfa, #2dd4bf);
+    }
+
+    .text-gradient-alt {
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: linear-gradient(to right, #38bdf8, #818cf8);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn-primary:hover::before {
+      opacity: 1;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: #8b5cf6;
+      background: rgba(139, 92, 246, 0.1);
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+    }
+
+    .hidden-layout {
+      display: none !important;
+    }
+
+    input,
+    textarea {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: all 0.3s;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #8b5cf6;
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+    }
+
+    .proj-thumb-1 {
+      background: linear-gradient(135deg, #FF6B6B, #556270);
+    }
+
+    .proj-thumb-2 {
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+    }
+
+    .proj-thumb-3 {
+      background: linear-gradient(135deg, #fa709a, #fee140);
+    }
+
+    .proj-thumb-4 {
+      background: linear-gradient(135deg, #43e97b, #38f9d7);
+    }
+
+    .proj-thumb-5 {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+
+    .proj-thumb-6 {
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      color: #333 !important;
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40%;
+      height: 3px;
+      background: linear-gradient(to right, #3b82f6, #2dd4bf);
+      border-radius: 2px;
+    }
+  </style>
+</head>
+
+<body class="text-slate-300 antialiased min-h-screen selection:bg-primary/30 selection:text-white pb-10">
+
+  <!-- Background Animated Blobs -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+    <div
+      class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob">
+    </div>
+    <div
+      class="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000">
+    </div>
+    <div
+      class="absolute -bottom-8 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000">
+    </div>
+  </div>
+
+  <!-- Layout Toggle -->
+  <div class="fixed top-6 right-6 z-50 glass-panel p-2 rounded-full flex gap-2">
+    <button
+      class="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-primary/80 text-white shadow-[0_0_15px_rgba(59,130,246,0.4)]"
+      id="portfolioBtn">
+      Portfolio
+    </button>
+    <button
+      class="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 text-slate-300 hover:text-white hover:bg-white/10"
+      id="serviceBtn">
+      Services
+    </button>
+  </div>
+
+  <!-- Header/Hero Section -->
+  <header class="pt-32 pb-20 px-6 relative">
+    <div class="max-w-4xl mx-auto text-center z-10 animate-float">
+      <div
+        class="mb-4 inline-block px-4 py-1.5 rounded-full border border-white/10 glass-panel text-sm text-cyan-400 tracking-wide uppercase font-semibold">
+        Available for freelance work
+      </div>
+      <h1 class="text-5xl md:text-7xl font-extrabold mb-6 text-white tracking-tight">
+        Hi, I'm <span class="text-gradient">Rachana Meena</span>
+      </h1>
+      <p class="text-xl md:text-2xl text-slate-400 mb-4 font-light">Freelance Full Stack Developer</p>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Building fast, scalable, and beautiful web experiences. Let's turn your ideas into functional, digital
+        realities.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact" class="btn-primary text-white font-medium py-3 px-8 rounded-full inline-block">
+          Get In Touch <i class="fas fa-arrow-right ml-2 text-sm"></i>
+        </a>
+        <a href="#projects" id="heroWorkBtn"
+          class="btn-outline text-white font-medium py-3 px-8 rounded-full inline-block">
+          View My Work
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6">
+
+    <!--========================================= 
+          PORTFOLIO LAYOUT 
+      ==========================================-->
+    <div id="portfolioLayout" class="space-y-32">
+
+      <!-- About Section -->
+      <section id="about" class="pt-10 scroll-mt-20">
+        <h2 class="text-4xl font-bold text-center text-white mb-16 section-title">About Me</h2>
+        <div class="glass-card max-w-3xl mx-auto p-10 md:p-12 rounded-3xl text-lg leading-relaxed">
+          <p class="mb-6">
+            I'm a passionate Full Stack Developer with hands-on experience in building end-to-end web applications. I
+            specialize in creating responsive, SEO-friendly, and high-performance websites using modern technologies
+            like <span class="text-cyan-400 font-semibold">React.js, Next.js, Node.js</span>, and <span
+              class="text-cyan-400 font-semibold">MongoDB</span>.
+          </p>
+          <p>
+            I enjoy turning ideas into functional digital products, whether for clients or personal projects. I'm
+            proactive, detail-oriented, and committed to delivering projects on time with clean, maintainable code.
+          </p>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="scroll-mt-20">
+        <h2 class="text-4xl font-bold text-center text-white mb-16 section-title">My Arsenal</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="glass-card p-8 rounded-2xl text-center group">
+            <div
+              class="w-16 h-16 mx-auto bg-blue-500/10 rounded-full flex items-center justify-center mb-6 border border-blue-500/20 group-hover:scale-110 transition-transform">
+              <i class="fas fa-layer-group text-2xl text-blue-400"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">Frontend</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">HTML5, CSS3, JavaScript (ES6+), React.js, Next.js,
+              Tailwind CSS</p>
+          </div>
+
+          <div class="glass-card p-8 rounded-2xl text-center group">
+            <div
+              class="w-16 h-16 mx-auto bg-green-500/10 rounded-full flex items-center justify-center mb-6 border border-green-500/20 group-hover:scale-110 transition-transform">
+              <i class="fas fa-server text-2xl text-green-400"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">Backend</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Node.js, Express.js, RESTful APIs, Authenticaton</p>
+          </div>
+
+          <div class="glass-card p-8 rounded-2xl text-center group">
+            <div
+              class="w-16 h-16 mx-auto bg-purple-500/10 rounded-full flex items-center justify-center mb-6 border border-purple-500/20 group-hover:scale-110 transition-transform">
+              <i class="fas fa-database text-2xl text-purple-400"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">Database</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">MongoDB, Mongoose, Data Modeling, Aggregations</p>
+          </div>
+
+          <div class="glass-card p-8 rounded-2xl text-center group">
+            <div
+              class="w-16 h-16 mx-auto bg-cyan-500/10 rounded-full flex items-center justify-center mb-6 border border-cyan-500/20 group-hover:scale-110 transition-transform">
+              <i class="fas fa-tools text-2xl text-cyan-400"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">Tools & Others</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Git, GitHub, Postman, SEO, Responsive Design, Vercel,
+              Render</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="scroll-mt-20">
+        <h2 class="text-4xl font-bold text-center text-white mb-16 section-title">Featured Works</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <a href="https://krytons.com/" target="_blank" class="block group">
+            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col">
+              <div
+                class="h-48 proj-thumb-1 flex items-center justify-center text-white text-2xl font-bold relative overflow-hidden">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500"></div>
+                <span class="z-10 group-hover:scale-110 transition-transform duration-500 text-shadow">Krytons</span>
+              </div>
+              <div class="p-6 flex-grow flex flex-col">
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Krytons</h3>
+                <p class="text-slate-400 text-sm mb-4 flex-grow">Built a full-stack Company website.</p>
+                <p class="text-xs font-semibold text-primary uppercase tracking-wider">React • Node.js • Express •
+                  MongoDB</p>
+              </div>
+            </div>
+          </a>
+          <a href="https://meek-bublanina-81aaff.netlify.app/" target="_blank">
+            <div class="block group cursor-pointer">
+              <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col">
+                <div
+                  class="h-48 proj-thumb-2 flex items-center justify-center text-white text-2xl font-bold relative overflow-hidden">
+                  <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500">
+                  </div>
+                  <span
+                    class="z-10 group-hover:scale-110 transition-transform duration-500 text-shadow">Brainwave</span>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                  <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Brainwave –
+                    AI/Web App</h3>
+                  <p class="text-slate-400 text-sm mb-4 flex-grow">Developed a dynamic web app with React and Redux for
+                    state management. Styled with Tailwind CSS for a modern UI.</p>
+                  <p class="text-xs font-semibold text-primary uppercase tracking-wider">React • Redux • Tailwind CSS
+                  </p>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://sttakindustries.com/" target="_blank" class="block group">
+            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col">
+              <div
+                class="h-48 proj-thumb-3 flex items-center justify-center text-white text-2xl font-bold relative overflow-hidden">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500"></div>
+                <span class="z-10 group-hover:scale-110 transition-transform duration-500 text-shadow">Transport
+                  Truck</span>
+              </div>
+              <div class="p-6 flex-grow flex flex-col">
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Transportation
+                  Truck Website</h3>
+                <p class="text-slate-400 text-sm mb-4 flex-grow">Created a static, SEO-optimized website for a trucking
+                  company. Designed service pages, company info, and contacts.</p>
+                <p class="text-xs font-semibold text-primary uppercase tracking-wider">React • Tailwind CSS • EmailJS
+                </p>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://sharvaclinique.com/" target="_blank" class="block group">
+            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col">
+              <div
+                class="h-48 proj-thumb-4 flex items-center justify-center text-white text-2xl font-bold relative overflow-hidden">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500"></div>
+                <span class="z-10 group-hover:scale-110 transition-transform duration-500 text-shadow">Clinic
+                  Site</span>
+              </div>
+              <div class="p-6 flex-grow flex flex-col">
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Clinic Website
+                </h3>
+                <p class="text-slate-400 text-sm mb-4 flex-grow">A professional and responsive static, SEO-optimized
+                  website for a health clinic providing clear services.</p>
+                <p class="text-xs font-semibold text-primary uppercase tracking-wider">React • CSS • EmailJS</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://brightgroupfoundation.org/" target="_blank" class="block group">
+            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col">
+              <div
+                class="h-48 proj-thumb-5 flex items-center justify-center text-white text-2xl font-bold relative overflow-hidden">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500"></div>
+                <span class="z-10 group-hover:scale-110 transition-transform duration-500 text-shadow">School
+                  Website</span>
+              </div>
+              <div class="p-6 flex-grow flex flex-col">
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">School Website
+                </h3>
+                <p class="text-slate-400 text-sm mb-4 flex-grow">Informational school profile with optimized
+                  architecture for SEO, ensuring mobile responsiveness.</p>
+                <p class="text-xs font-semibold text-primary uppercase tracking-wider">PHP • CSS</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://ourexperthelp.com/" target="_blank" class="block group">
+            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col">
+              <div
+                class="h-48 proj-thumb-6 flex items-center justify-center text-white text-2xl font-bold relative overflow-hidden">
+                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-500"></div>
+                <span class="z-10 group-hover:scale-110 transition-transform duration-500 text-shadow">Info Site</span>
+              </div>
+              <div class="p-6 flex-grow flex flex-col">
+                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Informational
+                  Website</h3>
+                <p class="text-slate-400 text-sm mb-4 flex-grow">Developed an engaging layout for an informational brand
+                  presence, structured for fast loading speeds.</p>
+                <p class="text-xs font-semibold text-primary uppercase tracking-wider">PHP • CSS</p>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </section>
+    </div>
+
+
+    <!--========================================= 
+          SERVICE FOCUSED LAYOUT 
+      ==========================================-->
+    <div id="serviceLayout" class="hidden-layout space-y-32">
+
+      <!-- About Services Section -->
+      <section id="about-service" class="pt-10 scroll-mt-20">
+        <h2 class="text-4xl font-bold text-center text-white mb-16 section-title">About Me & Services</h2>
+        <div class="glass-card max-w-3xl mx-auto p-10 md:p-12 rounded-3xl text-lg leading-relaxed text-center">
+          <div
+            class="w-20 h-20 mx-auto bg-gradient-to-tr from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-8 shadow-lg shadow-blue-500/30">
+            <i class="fas fa-rocket text-3xl text-white"></i>
+          </div>
+          <p class="mb-6">
+            I'm a passionate Full Stack Developer with hands-on experience in building end-to-end web applications. I
+            offer custom web development solutions tailored to strictly meet your business goals.
+          </p>
+          <p>
+            Below are the services I provide. Feel free to <a href="#contact"
+              class="text-blue-400 hover:text-blue-300 font-semibold underline decoration-2 underline-offset-4 transition-colors">contact
+              me</a> for a quote or to discuss your specific project needs!
+          </p>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="services" class="scroll-mt-20">
+        <h2 class="text-4xl font-bold text-center text-white mb-16 section-title">What I Offer</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all">
+            <i class="fas fa-code text-4xl text-gradient mb-6 inline-block"></i>
+            <h3 class="text-2xl font-bold text-white mb-3">Frontend Development</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Responsive, accessible, and ultra-fast websites built with
+              modern frameworks like React.js and Next.js.</p>
+          </div>
+
+          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all">
+            <i class="fas fa-server text-4xl text-gradient-alt mb-6 inline-block text-cyan-400"></i>
+            <h3 class="text-2xl font-bold text-white mb-3">Backend & API</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Scalable server logic, authenticaton layers, and robust
+              REST APIs using Node.js, Express.js, and MongoDB.</p>
+          </div>
+
+          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all">
+            <i class="fas fa-layer-group text-4xl text-indigo-400 mb-6 inline-block"></i>
+            <h3 class="text-2xl font-bold text-white mb-3">Full Stack Projects</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">End-to-end web application development taking your app
+              from the napkin concept all the way to deployment.</p>
+          </div>
+
+          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all">
+            <i class="fas fa-chart-line text-4xl text-green-400 mb-6 inline-block"></i>
+            <h3 class="text-2xl font-bold text-white mb-3">SEO Optimization</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Faster load times and better Google rankings through
+              semantic HTML structure and SSR techniques.</p>
+          </div>
+
+          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all">
+            <i class="fas fa-tools text-4xl text-orange-400 mb-6 inline-block"></i>
+            <h3 class="text-2xl font-bold text-white mb-3">Maintenance</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Ongoing reliable updates, performance improvements, bug
+              squashing, and support for your existing websites.</p>
+          </div>
+
+          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all">
+            <i class="fas fa-palette text-4xl text-pink-400 mb-6 inline-block"></i>
+            <h3 class="text-2xl font-bold text-white mb-3">UI/UX Revamps</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Modernizing interfaces like we are doing right now,
+              creating user-friendly sleek designs tailored to your brand.</p>
+          </div>
+
+        </div>
+        <div class="text-center mt-16">
+          <a href="#contact"
+            class="btn-primary text-white font-medium py-4 px-10 rounded-full inline-block text-lg shadow-lg">
+            Request a Custom Quote
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+    <!--========================================= 
+          SHARED CONTACT SECTION 
+      ==========================================-->
+    <section id="contact" class="py-32 scroll-mt-20">
+      <h2 class="text-4xl font-bold text-center text-white mb-6 section-title">Connect With Me</h2>
+      <p class="text-center text-slate-400 max-w-2xl mx-auto mb-16 text-lg">
+        Ready to start your next big project? Let's discuss your ideas and make them happen.
+      </p>
+
+      <div class="max-w-2xl mx-auto">
+        <div class="glass-card p-8 md:p-12 rounded-3xl">
+          <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" class="space-y-6">
+            <input type="hidden" name="access_key" value="ac3bf936-7508-483d-9d68-9a654151e06e" />
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label for="name" class="text-sm font-medium text-slate-300 ml-1">Full Name</label>
+                <input type="text" id="name" name="name" required class="w-full px-5 py-3 rounded-xl"
+                  placeholder="John Doe" />
+              </div>
+              <div class="space-y-2">
+                <label for="email" class="text-sm font-medium text-slate-300 ml-1">Email Address</label>
+                <input type="email" id="email" name="email" required class="w-full px-5 py-3 rounded-xl"
+                  placeholder="john@example.com" />
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <label for="message" class="text-sm font-medium text-slate-300 ml-1">Message</label>
+              <textarea id="message" rows="5" name="message" required class="w-full px-5 py-3 rounded-xl resize-none"
+                placeholder="How can I help you?"></textarea>
+            </div>
+
+            <button type="submit"
+              class="w-full btn-primary font-bold text-white py-4 rounded-xl mt-2 flex justify-center items-center gap-2 text-lg">
+              Send Message <i class="fas fa-paper-plane text-sm"></i>
+            </button>
+          </form>
+        </div>
+
+        <div class="mt-16 text-center">
+          <p class="text-slate-400 mb-6">Or reach out directly via</p>
+          <div class="flex justify-center gap-4 mb-8">
+            <a href="mailto:249rachanameena@gmail.com"
+              class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-white hover:text-primary transition-colors group">
+              <i class="fas fa-envelope text-xl group-hover:scale-110 transition-transform"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/rachana-meena-785387195/"
+              class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-white hover:text-blue-500 transition-colors group">
+              <i class="fab fa-linkedin-in text-xl group-hover:scale-110 transition-transform"></i>
+            </a>
+            <a href="https://github.com/robio11"
+              class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-white hover:text-slate-100 transition-colors group">
+              <i class="fab fa-github text-xl group-hover:scale-110 transition-transform"></i>
+            </a>
+            <a href="tel:+917424810784"
+              class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-white hover:text-green-500 transition-colors group">
+              <i class="fas fa-phone text-xl group-hover:scale-110 transition-transform"></i>
+            </a>
+          </div>
+          <div class="inline-block glass-panel px-6 py-3 rounded-full text-sm text-slate-300">
+            <span class="text-white font-medium">Email:</span> 249rachanameena@gmail.com <span
+              class="mx-3 text-white/20">|</span> <span class="text-white font-medium">Phone:</span> +91 7424810784
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-white/5 mt-10 py-10">
+    <div
+      class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-sm">
+      <p>&copy; <span id="year">2025</span> Rachana Meena. All rights reserved.</p>
+      <p class="font-medium tracking-wide">Freelance Full Stack Developer</p>
+    </div>
+  </footer>
+
+  <script>
+    // Layout Switching Functionality
+    const portfolioBtn = document.getElementById("portfolioBtn");
+    const serviceBtn = document.getElementById("serviceBtn");
+    const portfolioLayout = document.getElementById("portfolioLayout");
+    const serviceLayout = document.getElementById("serviceLayout");
+    const heroWorkBtn = document.getElementById("heroWorkBtn");
+
+    // Active state classes for the buttons
+    const btnActiveClasses = ['bg-primary/80', 'text-white', 'shadow-[0_0_15px_rgba(59,130,246,0.4)]'];
+    const btnInactiveClasses = ['text-slate-300', 'hover:text-white', 'hover:bg-white/10', 'bg-transparent'];
+
+    const setBtnActive = (btn) => {
+      btn.classList.add(...btnActiveClasses);
+      btn.classList.remove(...btnInactiveClasses);
+    };
+
+    const setBtnInactive = (btn) => {
+      btn.classList.remove(...btnActiveClasses);
+      btn.classList.add(...btnInactiveClasses);
+    };
+
+    portfolioBtn.addEventListener("click", () => {
+      setBtnActive(portfolioBtn);
+      setBtnInactive(serviceBtn);
+      portfolioLayout.classList.remove("hidden-layout");
+      serviceLayout.classList.add("hidden-layout");
+      heroWorkBtn.textContent = 'View My Work';
+      heroWorkBtn.setAttribute('href', '#projects');
+    });
+
+    serviceBtn.addEventListener("click", () => {
+      setBtnActive(serviceBtn);
+      setBtnInactive(portfolioBtn);
+      serviceLayout.classList.remove("hidden-layout");
+      portfolioLayout.classList.add("hidden-layout");
+      heroWorkBtn.textContent = 'View Services';
+      heroWorkBtn.setAttribute('href', '#services');
+    });
+
+    // Smooth scrolling for anchor links (safeguard, though Tailwind scroll-smooth handles most)
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute("href");
+        if (targetId === "#") return;
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Form submission mock
+    const contactForm = document.getElementById("contactForm");
+    contactForm.addEventListener("submit", function (e) {
+      // e.preventDefault(); // Un-comment to prevent actual Web3Forms submission for testing
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      // Optionally show toast or alert here before letting Web3Forms redirect
+      // alert(`Thank you ${name}! Sending your message from ${email}...`);
+    });
+
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
