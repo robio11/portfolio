@@ -230,37 +230,52 @@
   </div>
 
   <!-- Header/Hero Section -->
-  <header class="pt-32 pb-20 px-6 relative">
-    <div class="max-w-4xl mx-auto text-center z-10 animate-float">
-      <div
-        class="mb-4 inline-block px-4 py-1.5 rounded-full border border-white/10 glass-panel text-sm text-cyan-400 tracking-wide uppercase font-semibold">
-        Available for work
+  <header class="pt-32 pb-20 px-6 relative z-10">
+    <div
+      class="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-12 text-center md:text-left">
+      <!-- Text Content -->
+      <div class="flex-1 max-w-2xl animate-float" style="animation-delay: 1s;">
+        <div
+          class="mb-4 inline-block px-4 py-1.5 rounded-full border border-white/10 glass-panel text-sm text-cyan-400 tracking-wide uppercase font-semibold">
+          Available for work
+        </div>
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 text-white tracking-tight">
+          Hi, I'm <br class="hidden md:block" /> <span class="text-gradient">Rachana Meena</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-slate-400 mb-4 font-light">Full Stack Developer</p>
+        <p class="text-lg text-slate-400 mb-10 leading-relaxed text-balance md:max-w-[90%]">
+          Building fast, scalable, and beautiful web experiences. Let's turn your ideas into functional, digital
+          realities.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+          <a href="#contact"
+            class="btn-primary text-white font-medium py-3 px-8 rounded-full inline-flex justify-center items-center">
+            Get In Touch <i class="fas fa-arrow-right ml-2 text-sm"></i>
+          </a>
+          <a href="#projects" id="heroWorkBtn"
+            class="btn-outline text-white font-medium py-3 px-8 rounded-full inline-block">
+            View My Work
+          </a>
+        </div>
       </div>
-      <h1 class="text-5xl md:text-7xl font-extrabold mb-6 text-white tracking-tight">
-        Hi, I'm <span class="text-gradient">Rachana Meena</span>
-      </h1>
-      <p class="text-xl md:text-2xl text-slate-400 mb-4 font-light">Full Stack Developer</p>
-      <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-        Building fast, scalable, and beautiful web experiences. Let's turn your ideas into functional, digital
-        realities.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#contact" class="btn-primary text-white font-medium py-3 px-8 rounded-full inline-block">
-          Get In Touch <i class="fas fa-arrow-right ml-2 text-sm"></i>
-        </a>
-        <a href="#projects" id="heroWorkBtn"
-          class="btn-outline text-white font-medium py-3 px-8 rounded-full inline-block">
-          View My Work
-        </a>
+
+      <!-- Image Wireframe / Profile Picture Container -->
+      <div class="flex-1 flex justify-center md:justify-end animate-float w-full max-w-md">
+        <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full p-2 glass-panel group">
+          <!-- Decorative glow effect behind the image -->
+          <div
+            class="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-400 to-purple-500 blur opacity-40 group-hover:opacity-70 transition-opacity duration-500">
+          </div>
+          <div
+            class="relative z-10 w-full h-full rounded-full border-4 border-slate-800/80 shadow-2xl overflow-hidden bg-slate-800/50 flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-[1.02]">
+            <img src="./rachana.png" alt="" class="w-full h-full object-cover">
+          </div>
+        </div>
       </div>
     </div>
   </header>
 
   <main class="max-w-6xl mx-auto px-6">
-
-    <!--========================================= 
-          PORTFOLIO LAYOUT 
-      ==========================================-->
     <div id="portfolioLayout" class="space-y-32">
 
       <!-- About Section -->
@@ -442,10 +457,6 @@
       </section>
     </div>
 
-
-    <!--========================================= 
-          SERVICE FOCUSED LAYOUT 
-      ==========================================-->
     <div id="serviceLayout" class="hidden-layout space-y-32">
 
       <!-- About Services Section -->
@@ -526,9 +537,6 @@
 
     </div>
 
-    <!--========================================= 
-          SHARED CONTACT SECTION 
-      ==========================================-->
     <section id="contact" class="py-32 scroll-mt-20">
       <h2 class="text-4xl font-bold text-center text-white mb-6 section-title">Connect With Me</h2>
       <p class="text-center text-slate-400 max-w-2xl mx-auto mb-16 text-lg">
@@ -663,8 +671,6 @@
       // e.preventDefault(); // Un-comment to prevent actual Web3Forms submission for testing
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
-      // Optionally show toast or alert here before letting Web3Forms redirect
-      // alert(`Thank you ${name}! Sending your message from ${email}...`);
     });
 
     // Set current year in footer
