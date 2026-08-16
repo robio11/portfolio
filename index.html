@@ -4,13 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rachana Meena | Freelance Full Stack Developer</title>
-  <!-- Modern Font: Outfit -->
+  <title>Rachana Meena | Creative Full Stack Developer</title>
+  <!-- Google Fonts: Cormorant Garamond (Editorial Serif), Alex Brush (Luxury Script), Outfit (Clean Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -18,29 +20,26 @@
         extend: {
           fontFamily: {
             sans: ['Outfit', 'sans-serif'],
+            serifTitle: ['"Cormorant Garamond"', 'serif'],
+            script: ['"Alex Brush"', 'cursive'],
           },
           colors: {
-            dark: '#0f172a',
-            darker: '#0b1120',
-            primary: '#3b82f6',
-            secondary: '#10b981',
-            accent1: '#8b5cf6',
-            accent2: '#06b6d4',
+            bgDark: '#0b0f17',
+            cardDark: '#131b2e',
+            cardBorder: 'rgba(255, 255, 255, 0.08)',
+            champagne: '#f8fafc',
+            goldAccent: '#38bdf8',
+            roseWine: '#4f46e5',
+            mutedText: '#94a3b8',
           },
           animation: {
             'float': 'float 6s ease-in-out infinite',
-            'blob': 'blob 7s infinite',
+            'slow-spin': 'spin 20s linear infinite',
           },
           keyframes: {
             float: {
               '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-20px)' },
-            },
-            blob: {
-              '0%': { transform: 'translate(0px, 0px) scale(1)' },
-              '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-              '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-              '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              '50%': { transform: 'translateY(-10px)' },
             }
           }
         }
@@ -48,57 +47,91 @@
     }
   </script>
   <style>
+    html, body {
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
     body {
-      background-color: #0b1120;
+      background-color: #0b0f17;
       background-image:
-        radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
+        radial-gradient(at 10% 10%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+        radial-gradient(at 90% 10%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+        radial-gradient(at 50% 90%, rgba(14, 165, 233, 0.06) 0px, transparent 60%);
       background-attachment: fixed;
+      color: #cbd5e1;
+    }
+
+    .editorial-hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 13vw, 11rem);
+      line-height: 0.9;
+      letter-spacing: 0.04em;
+      color: rgba(241, 245, 249, 0.88);
+      text-transform: uppercase;
+      width: 100%;
+      max-width: 100%;
+      text-align: center;
+      white-space: nowrap;
+      user-select: none;
+      opacity: 0.95;
+      transition: all 0.3s ease;
+    }
+
+    .font-serif-title {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .font-script {
+      font-family: 'Alex Brush', cursive;
     }
 
     .glass-panel {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .glass-card {
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(17, 24, 39, 0.8);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+    }
+
+    .glass-card {
+      background: rgba(17, 24, 39, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .glass-card:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(139, 92, 246, 0.3);
-      transform: translateY(-8px);
-      box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2);
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -10px rgba(14, 165, 233, 0.15);
     }
 
     .text-gradient {
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-image: linear-gradient(to right, #60a5fa, #a78bfa, #2dd4bf);
+      background-image: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
     }
 
-    .text-gradient-alt {
+    .text-gradient-rose {
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-image: linear-gradient(to right, #38bdf8, #818cf8);
+      background-image: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      background: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
       transition: all 0.3s ease;
       position: relative;
       z-index: 1;
       overflow: hidden;
+      color: #ffffff;
+      box-shadow: 0 4px 20px rgba(2, 132, 199, 0.35);
     }
 
     .btn-primary::before {
@@ -108,7 +141,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+      background: linear-gradient(135deg, #4f46e5 0%, #0284c7 100%);
       opacity: 0;
       z-index: -1;
       transition: opacity 0.3s ease;
@@ -119,21 +152,23 @@
     }
 
     .btn-primary:hover {
-      box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+      box-shadow: 0 8px 30px rgba(56, 189, 248, 0.4);
       transform: translateY(-2px);
     }
 
     .btn-outline {
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(15, 23, 42, 0.6);
+      color: #f1f5f9;
       transition: all 0.3s ease;
     }
 
     .btn-outline:hover {
-      border-color: #8b5cf6;
-      background: rgba(139, 92, 246, 0.1);
+      border-color: #38bdf8;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
       transform: translateY(-2px);
-      box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.15);
     }
 
     .hidden-layout {
@@ -142,48 +177,43 @@
 
     input,
     textarea {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: white;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #f8fafc;
       transition: all 0.3s;
     }
 
     input:focus,
     textarea:focus {
       outline: none;
-      border-color: #8b5cf6;
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
+      border-color: #38bdf8;
+      background: rgba(30, 41, 59, 0.9);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
     }
 
-    .proj-thumb-1 {
-      background: linear-gradient(135deg, #FF6B6B, #556270);
+    input::placeholder,
+    textarea::placeholder {
+      color: #64748b;
     }
 
-    .proj-thumb-2 {
-      background: linear-gradient(135deg, #4facfe, #00f2fe);
-    }
-
-    .proj-thumb-3 {
-      background: linear-gradient(135deg, #fa709a, #fee140);
-    }
-
-    .proj-thumb-4 {
-      background: linear-gradient(135deg, #43e97b, #38f9d7);
-    }
-
-    .proj-thumb-5 {
-      background: linear-gradient(135deg, #667eea, #764ba2);
-    }
-
-    .proj-thumb-6 {
-      background: linear-gradient(135deg, #fdfbfb, #ebedee);
-      color: #333 !important;
-    }
+    .proj-thumb-1 { background: linear-gradient(135deg, #1e1b4b, #312e81); }
+    .proj-thumb-2 { background: linear-gradient(135deg, #0c4a6e, #0369a1); }
+    .proj-thumb-3 { background: linear-gradient(135deg, #14532d, #15803d); }
+    .proj-thumb-4 { background: linear-gradient(135deg, #581c87, #6b21a8); }
+    .proj-thumb-5 { background: linear-gradient(135deg, #701a75, #86198f); }
+    .proj-thumb-6 { background: linear-gradient(135deg, #334155, #475569); }
+    .proj-thumb-7 { background: linear-gradient(135deg, #065f46, #047857); }
+    .proj-thumb-8 { background: linear-gradient(135deg, #831843, #9d174d); }
+    .proj-thumb-9 { background: linear-gradient(135deg, #78350f, #92400e); }
+    .proj-thumb-10 { background: linear-gradient(135deg, #1e3a8a, #1d4ed8); }
+    .proj-thumb-11 { background: linear-gradient(135deg, #4c1d95, #5b21b6); }
 
     .section-title {
       position: relative;
       display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
     }
 
     .section-title::after {
@@ -192,86 +222,136 @@
       bottom: -10px;
       left: 50%;
       transform: translateX(-50%);
-      width: 40%;
-      height: 3px;
-      background: linear-gradient(to right, #3b82f6, #2dd4bf);
-      border-radius: 2px;
+      width: 50px;
+      height: 2px;
+      background: #38bdf8;
+    }
+
+    .iti {
+      width: 100%;
+      display: block;
+    }
+
+    .iti__country-list {
+      color: #f8fafc;
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      z-index: 60;
+      background: #0f172a;
+      padding: 6px 0;
+    }
+
+    .iti__country {
+      padding: 8px 14px;
+      font-size: 0.875rem;
+    }
+
+    .iti__country:hover {
+      background-color: rgba(56, 189, 248, 0.15) !important;
+    }
+
+    .iti__selected-flag {
+      border-top-left-radius: 0.75rem;
+      border-bottom-left-radius: 0.75rem;
+      padding: 0 14px;
+      background: transparent;
+    }
+
+    .iti__selected-flag:hover {
+      background: rgba(255, 255, 255, 0.08);
     }
   </style>
 </head>
 
-<body class="text-slate-300 antialiased min-h-screen selection:bg-primary/30 selection:text-white pb-10">
+<body class="text-slate-300 antialiased min-h-screen selection:bg-sky-500/30 selection:text-white pb-10">
 
-  <!-- Background Animated Blobs -->
+  <!-- Floating Ambient Soft Glow Backdrop -->
   <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
-    <div
-      class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob">
-    </div>
-    <div
-      class="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000">
-    </div>
-    <div
-      class="absolute -bottom-8 left-20 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000">
-    </div>
+    <div class="absolute top-[-10%] left-[-5%] w-[500px] h-[500px] bg-sky-600/10 rounded-full filter blur-[130px] opacity-40"></div>
+    <div class="absolute top-[30%] right-[-10%] w-[600px] h-[600px] bg-indigo-600/10 rounded-full filter blur-[140px] opacity-30"></div>
+    <div class="absolute bottom-[-10%] left-[20%] w-[500px] h-[500px] bg-blue-600/10 rounded-full filter blur-[130px] opacity-40"></div>
   </div>
 
-  <!-- Layout Toggle -->
-  <div class="fixed top-6 right-6 z-50 glass-panel p-2 rounded-full flex gap-2">
+  <!-- Layout Toggle Header -->
+  <div class="fixed top-6 right-6 z-50 glass-panel p-1.5 rounded-full flex gap-1 shadow-2xl border border-white/10">
     <button
-      class="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 bg-primary/80 text-white shadow-[0_0_15px_rgba(59,130,246,0.4)]"
+      class="px-6 py-2 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 bg-sky-500 text-slate-950 shadow-md"
       id="portfolioBtn">
       Portfolio
     </button>
     <button
-      class="px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 text-slate-300 hover:text-white hover:bg-white/10"
+      class="px-6 py-2 rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 text-slate-300 hover:text-white hover:bg-white/5 bg-transparent"
       id="serviceBtn">
       Services
     </button>
   </div>
 
-  <!-- Header/Hero Section -->
-  <header class="pt-32 pb-20 px-6 relative z-10">
-    <div
-      class="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-12 text-center md:text-left">
-      <!-- Text Content -->
-      <div class="flex-1 max-w-2xl animate-float" style="animation-delay: 1s;">
-        <div
-          class="mb-4 inline-block px-4 py-1.5 rounded-full border border-white/10 glass-panel text-sm text-cyan-400 tracking-wide uppercase font-semibold">
-          Available for work
+  <!-- Top Editorial Header Bar -->
+  <div class="pt-6 sm:pt-8 px-4 sm:px-8 max-w-7xl mx-auto flex justify-between items-center text-[10px] sm:text-xs tracking-widest text-slate-400 uppercase">
+    <span>FULL STACK DEVELOPER</span>
+    <span>CREATIVE PORTFOLIO </span>
+  </div>
+
+  <!-- Header/Hero Section - Editorial Magazine Style -->
+  <header class="pt-4 sm:pt-6 pb-16 sm:pb-20 px-4 sm:px-6 relative z-10 overflow-hidden">
+    <div class="max-w-7xl mx-auto flex flex-col items-center text-center relative w-full overflow-hidden">
+      
+      <!-- Giant Editorial Backdrop Text (Fluid & 100% Eye-Friendly) -->
+      <h1 class="editorial-hero-title">
+        PORTFOLIO
+      </h1>
+
+      <!-- Overlay Grid: Content Left, Profile Center, Specs Right -->
+      <div class="mt-[-1.5rem] sm:mt-[-3rem] md:mt-[-5rem] lg:mt-[-6.5rem] grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-center w-full max-w-6xl z-10 px-2 sm:px-4">
+        
+        <!-- Left Side Editorial Intro -->
+        <div class="text-center lg:text-left space-y-3 sm:space-y-4 order-2 lg:order-1">
+          <div class="inline-block px-3.5 py-1.5 rounded-full border border-sky-500/30 glass-panel text-[10px] sm:text-xs text-sky-400 uppercase tracking-widest font-semibold">
+            AVAILABLE FOR PROJECTS ✦
+          </div>
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-serif-title text-slate-100 leading-tight font-light">
+            I design & build digital experiences that inspire & connect.
+          </h2>
+          <p class="font-script text-3xl sm:text-4xl md:text-5xl text-sky-400 py-1">
+            Rachana Meena
+          </p>
+          <div class="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+            <a href="#contact"
+              class="btn-primary text-white font-medium py-3 px-6 sm:px-8 rounded-full inline-flex justify-center items-center text-xs sm:text-sm tracking-wider uppercase">
+              Get In Touch <i class="fas fa-arrow-right ml-2 text-xs"></i>
+            </a>
+            <a href="#projects" id="heroWorkBtn"
+              class="btn-outline font-medium py-3 px-6 sm:px-8 rounded-full inline-block text-xs sm:text-sm tracking-wider uppercase">
+              View My Work
+            </a>
+          </div>
         </div>
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 text-white tracking-tight">
-          Hi, I'm <br class="hidden md:block" /> <span class="text-gradient">Rachana Meena</span>
-        </h1>
-        <p class="text-xl md:text-2xl text-slate-400 mb-4 font-light">Full Stack Developer</p>
-        <p class="text-lg text-slate-400 mb-10 leading-relaxed text-balance md:max-w-[90%]">
-          Building fast, scalable, and beautiful web experiences. Let's turn your ideas into functional, digital
-          realities.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-          <a href="#contact"
-            class="btn-primary text-white font-medium py-3 px-8 rounded-full inline-flex justify-center items-center">
-            Get In Touch <i class="fas fa-arrow-right ml-2 text-sm"></i>
-          </a>
-          <a href="#projects" id="heroWorkBtn"
-            class="btn-outline text-white font-medium py-3 px-8 rounded-full inline-block">
-            View My Work
-          </a>
+
+        <!-- Center Profile Picture Frame -->
+        <div class="flex justify-center order-1 lg:order-2">
+          <div class="relative w-52 h-64 sm:w-64 sm:h-80 md:w-72 md:h-96 lg:w-80 lg:h-[26rem] rounded-[2.5rem] sm:rounded-[3rem] p-2 glass-panel group shadow-2xl border border-sky-500/20">
+            <!-- Decorative Soft Glow -->
+            <div class="absolute inset-0 rounded-[2.5rem] sm:rounded-[3rem] bg-gradient-to-t from-sky-600/30 via-indigo-500/20 to-transparent blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+            
+            <div class="relative z-10 w-full h-full rounded-[2rem] sm:rounded-[2.5rem] border border-white/10 overflow-hidden bg-slate-900 flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.02]">
+              <img src="./rachana.png" alt="Rachana Meena" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+            </div>
+          </div>
         </div>
+
+        <!-- Right Side Specs -->
+        <div class="text-center lg:text-right space-y-3 sm:space-y-4 order-3">
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-xs mx-auto lg:ml-auto">
+            Full Stack Developer crafting fast, scalable, and user-centered web applications. Turning complex ideas into elegant reality.
+          </p>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 glass-panel text-[10px] sm:text-xs text-slate-300 tracking-widest uppercase">
+            <i class="fas fa-globe text-sky-400"></i> WORKING WORLDWIDE ✦ 
+          </div>
+        </div>
+
       </div>
 
-      <!-- Image Wireframe / Profile Picture Container -->
-      <div class="flex-1 flex justify-center md:justify-end animate-float w-full max-w-md">
-        <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full p-2 glass-panel group">
-          <!-- Decorative glow effect behind the image -->
-          <div
-            class="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-400 to-purple-500 blur opacity-40 group-hover:opacity-70 transition-opacity duration-500">
-          </div>
-          <div
-            class="relative z-10 w-full h-full rounded-full border-4 border-slate-800/80 shadow-2xl overflow-hidden bg-slate-800/50 flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-[1.02]">
-            <img src="./rachana.png" alt="" class="w-full h-full object-cover">
-          </div>
-        </div>
-      </div>
     </div>
   </header>
 
@@ -280,256 +360,371 @@
 
       <!-- About Section -->
       <section id="about" class="pt-10 scroll-mt-20">
-        <h2 class="text-4xl font-bold text-center text-white mb-16 section-title">About Me</h2>
-        <div class="glass-card max-w-3xl mx-auto p-10 md:p-12 rounded-3xl text-lg leading-relaxed">
-          <p class="mb-6">
-            I'm a passionate Full Stack Developer with hands-on experience in building end-to-end web applications. I
-            specialize in creating responsive, SEO-friendly, and high-performance websites using modern technologies
-            like <span class="text-cyan-400 font-semibold">React.js, Next.js, Node.js</span>, and <span
-              class="text-cyan-400 font-semibold">MongoDB</span>.
+        <h2 class="text-3xl md:text-5xl font-light text-center text-slate-100 mb-16 section-title">About Me</h2>
+        <div class="glass-card max-w-4xl mx-auto p-8 md:p-12 rounded-3xl text-base md:text-lg leading-relaxed text-slate-300 border border-white/10 relative overflow-hidden">
+          <div class="absolute top-0 right-0 p-8 text-8xl font-serif-title text-white/5 select-none pointer-events-none">01</div>
+          <p class="mb-6 font-light">
+            I'm a passionate Full Stack Developer with hands-on experience in building end-to-end web applications. I specialize in creating responsive, SEO-friendly, and high-performance websites using modern technologies like <span class="text-sky-400 font-medium">React.js, Next.js, Node.js</span>, and <span class="text-sky-400 font-medium">MongoDB</span>.
           </p>
-          <p>
-            I enjoy turning ideas into functional digital products, whether for clients or personal projects. I'm
-            proactive, detail-oriented, and committed to delivering projects on time with clean, maintainable code.
+          <p class="font-light">
+            I enjoy turning ideas into functional digital products, whether for clients or personal projects. I'm proactive, detail-oriented, and committed to delivering projects on time with clean, maintainable code.
           </p>
         </div>
       </section>
 
-      <!-- Skills Section -->
+      <!-- Skills / Arsenal Section -->
       <section id="skills" class="scroll-mt-20">
-        <h2 class="text-4xl font-bold text-center text-white mb-16 section-title">My Arsenal</h2>
+        <h2 class="text-3xl md:text-5xl font-light text-center text-slate-100 mb-16 section-title">My Arsenal</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="glass-card p-8 rounded-2xl text-center group">
-            <div
-              class="w-16 h-16 mx-auto bg-blue-500/10 rounded-full flex items-center justify-center mb-6 border border-blue-500/20 group-hover:scale-110 transition-transform">
-              <i class="fas fa-layer-group text-2xl text-blue-400"></i>
+          
+          <div class="glass-card p-8 rounded-2xl text-center group border border-white/10 relative">
+            <span class="text-xs font-serif-title text-slate-500 absolute top-4 left-6">01</span>
+            <div class="w-16 h-16 mx-auto bg-sky-500/10 rounded-full flex items-center justify-center mb-6 border border-sky-500/20 group-hover:scale-110 transition-transform">
+              <i class="fas fa-layer-group text-2xl text-sky-400"></i>
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">Frontend</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">HTML5, CSS3, JavaScript (ES6+), React.js, Next.js,
-              Tailwind CSS</p>
+            <h3 class="text-xl font-serif-title text-slate-100 mb-3 uppercase tracking-wider">Frontend</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">HTML5, CSS3, JavaScript (ES6+), React.js, Next.js, Tailwind CSS</p>
           </div>
 
-          <div class="glass-card p-8 rounded-2xl text-center group">
-            <div
-              class="w-16 h-16 mx-auto bg-green-500/10 rounded-full flex items-center justify-center mb-6 border border-green-500/20 group-hover:scale-110 transition-transform">
-              <i class="fas fa-server text-2xl text-green-400"></i>
+          <div class="glass-card p-8 rounded-2xl text-center group border border-white/10 relative">
+            <span class="text-xs font-serif-title text-slate-500 absolute top-4 left-6">02</span>
+            <div class="w-16 h-16 mx-auto bg-emerald-500/10 rounded-full flex items-center justify-center mb-6 border border-emerald-500/20 group-hover:scale-110 transition-transform">
+              <i class="fas fa-server text-2xl text-emerald-400"></i>
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">Backend</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Node.js, Express.js, RESTful APIs, Authenticaton</p>
+            <h3 class="text-xl font-serif-title text-slate-100 mb-3 uppercase tracking-wider">Backend</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Node.js, Express.js, RESTful APIs, Authentication</p>
           </div>
 
-          <div class="glass-card p-8 rounded-2xl text-center group">
-            <div
-              class="w-16 h-16 mx-auto bg-purple-500/10 rounded-full flex items-center justify-center mb-6 border border-purple-500/20 group-hover:scale-110 transition-transform">
+          <div class="glass-card p-8 rounded-2xl text-center group border border-white/10 relative">
+            <span class="text-xs font-serif-title text-slate-500 absolute top-4 left-6">03</span>
+            <div class="w-16 h-16 mx-auto bg-purple-500/10 rounded-full flex items-center justify-center mb-6 border border-purple-500/20 group-hover:scale-110 transition-transform">
               <i class="fas fa-database text-2xl text-purple-400"></i>
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">Database</h3>
+            <h3 class="text-xl font-serif-title text-slate-100 mb-3 uppercase tracking-wider">Database</h3>
             <p class="text-slate-400 text-sm leading-relaxed">MongoDB, Mongoose, Data Modeling, Aggregations</p>
           </div>
 
-          <div class="glass-card p-8 rounded-2xl text-center group">
-            <div
-              class="w-16 h-16 mx-auto bg-cyan-500/10 rounded-full flex items-center justify-center mb-6 border border-cyan-500/20 group-hover:scale-110 transition-transform">
-              <i class="fas fa-tools text-2xl text-cyan-400"></i>
+          <div class="glass-card p-8 rounded-2xl text-center group border border-white/10 relative">
+            <span class="text-xs font-serif-title text-slate-500 absolute top-4 left-6">04</span>
+            <div class="w-16 h-16 mx-auto bg-indigo-500/10 rounded-full flex items-center justify-center mb-6 border border-indigo-500/20 group-hover:scale-110 transition-transform">
+              <i class="fas fa-tools text-2xl text-indigo-400"></i>
             </div>
-            <h3 class="text-xl font-bold text-white mb-3">Tools & Others</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Git, GitHub, Postman, SEO, Responsive Design, Vercel,
-              Render</p>
+            <h3 class="text-xl font-serif-title text-slate-100 mb-3 uppercase tracking-wider">Tools & Others</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">Git, GitHub, Postman, SEO, Responsive Design, Vercel, Render</p>
           </div>
+
+        </div>
+      </section>
+
+      <!-- My Process Section (Matching Reference Image) -->
+      <section id="process" class="scroll-mt-20">
+        <h2 class="text-3xl md:text-5xl font-light text-center text-slate-100 mb-16 section-title">My Process</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center glass-card p-8 md:p-12 rounded-3xl border border-white/10">
+          
+          <div class="space-y-6">
+            <div class="flex items-start gap-6 group">
+              <span class="text-2xl font-serif-title text-sky-400 font-light">01</span>
+              <div>
+                <h3 class="text-lg font-bold text-slate-100 uppercase tracking-wider">Discover</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Understanding your goals, target audience, and project vision thoroughly.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-6 group">
+              <span class="text-2xl font-serif-title text-sky-400 font-light">02</span>
+              <div>
+                <h3 class="text-lg font-bold text-slate-100 uppercase tracking-wider">Define</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Architecture research, strategy planning, and technical roadmap definition.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-6 group">
+              <span class="text-2xl font-serif-title text-sky-400 font-light">03</span>
+              <div>
+                <h3 class="text-lg font-bold text-slate-100 uppercase tracking-wider">Design & Code</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Crafting responsive UI components and writing clean, maintainable backend code.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-6 group">
+              <span class="text-2xl font-serif-title text-sky-400 font-light">04</span>
+              <div>
+                <h3 class="text-lg font-bold text-slate-100 uppercase tracking-wider">Develop</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">End-to-end integration, API connects, and database optimization.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-6 group">
+              <span class="text-2xl font-serif-title text-sky-400 font-light">05</span>
+              <div>
+                <h3 class="text-lg font-bold text-slate-100 uppercase tracking-wider">Deliver</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">Testing, deployment, SEO optimization, and launching with care.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-center justify-center text-center p-8 border border-white/10 rounded-2xl bg-slate-900/50">
+            <div class="w-32 h-32 rounded-full border border-sky-500/30 flex items-center justify-center mb-6 relative">
+              <i class="fas fa-gem text-4xl text-sky-400 animate-float"></i>
+              <div class="absolute inset-0 rounded-full border border-indigo-500/30 animate-slow-spin"></div>
+            </div>
+            <p class="font-serif-title text-xl text-slate-200 italic max-w-xs">
+              "A thoughtful process for meaningful, high-performing digital results."
+            </p>
+          </div>
+
         </div>
       </section>
 
       <!-- Projects Section -->
       <section id="projects" class="scroll-mt-20">
-        <h2 class="text-4xl font-bold text-center text-white mb-16 section-title">Featured Works</h2>
+        <h2 class="text-3xl md:text-5xl font-light text-center text-slate-100 mb-16 section-title">Selected Projects</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
           <a href="https://krytons.com/" target="_blank" class="block group">
-            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col">
-              <div
-                class="h-48 proj-thumb-1 flex items-center justify-center text-white text-2xl font-bold relative overflow-hidden">
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500"></div>
-                <span class="z-10 group-hover:scale-110 transition-transform duration-500 text-shadow">Krytons</span>
+            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col border border-white/10 shadow-sm hover:shadow-2xl">
+              <div class="h-52 proj-thumb-1 flex items-center justify-center text-white text-2xl font-serif-title relative overflow-hidden">
+                <span class="text-xs font-serif-title text-white/50 absolute top-4 left-6">01</span>
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-all duration-500"></div>
+                <span class="z-10 group-hover:scale-110 transition-transform duration-500 tracking-wider">Krytons</span>
               </div>
               <div class="p-6 flex-grow flex flex-col">
-                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Krytons</h3>
-                <p class="text-slate-400 text-sm mb-4 flex-grow">Built a full-stack Company website.</p>
-                <p class="text-xs font-semibold text-primary uppercase tracking-wider">React • Node.js • Express •
-                  MongoDB</p>
+                <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-sky-400 transition-colors">Krytons</h3>
+                <p class="text-slate-400 text-xs flex-grow">Built a full-stack Company website.</p>
               </div>
             </div>
           </a>
-          <a href="https://meek-bublanina-81aaff.netlify.app/" target="_blank">
-            <div class="block group cursor-pointer">
-              <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col">
-                <div
-                  class="h-48 proj-thumb-2 flex items-center justify-center text-white text-2xl font-bold relative overflow-hidden">
-                  <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500">
-                  </div>
-                  <span
-                    class="z-10 group-hover:scale-110 transition-transform duration-500 text-shadow">Brainwave</span>
-                </div>
-                <div class="p-6 flex-grow flex flex-col">
-                  <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Brainwave –
-                    AI/Web App</h3>
-                  <p class="text-slate-400 text-sm mb-4 flex-grow">Developed a dynamic web app with React and Redux for
-                    state management. Styled with Tailwind CSS for a modern UI.</p>
-                  <p class="text-xs font-semibold text-primary uppercase tracking-wider">React • Redux • Tailwind CSS
-                  </p>
-                </div>
+
+          <a href="https://meek-bublanina-81aaff.netlify.app/" target="_blank" class="block group">
+            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col border border-white/10 shadow-sm hover:shadow-2xl">
+              <div class="h-52 proj-thumb-2 flex items-center justify-center text-white text-2xl font-serif-title relative overflow-hidden">
+                <span class="text-xs font-serif-title text-white/50 absolute top-4 left-6">02</span>
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-all duration-500"></div>
+                <span class="z-10 group-hover:scale-110 transition-transform duration-500 tracking-wider">Brainwave</span>
+              </div>
+              <div class="p-6 flex-grow flex flex-col">
+                <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-sky-400 transition-colors">Brainwave – AI/Web App</h3>
+                <p class="text-slate-400 text-xs flex-grow">Developed a dynamic web app with React and Redux for state management. Styled with Tailwind CSS.</p>
               </div>
             </div>
           </a>
 
           <a href="https://sttakindustries.com/" target="_blank" class="block group">
-            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col">
-              <div
-                class="h-48 proj-thumb-3 flex items-center justify-center text-white text-2xl font-bold relative overflow-hidden">
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500"></div>
-                <span class="z-10 group-hover:scale-110 transition-transform duration-500 text-shadow">Transport
-                  Truck</span>
+            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col border border-white/10 shadow-sm hover:shadow-2xl">
+              <div class="h-52 proj-thumb-3 flex items-center justify-center text-white text-2xl font-serif-title relative overflow-hidden">
+                <span class="text-xs font-serif-title text-white/50 absolute top-4 left-6">03</span>
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-all duration-500"></div>
+                <span class="z-10 group-hover:scale-110 transition-transform duration-500 tracking-wider">Transport Truck</span>
               </div>
               <div class="p-6 flex-grow flex flex-col">
-                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Transportation
-                  Truck Website</h3>
-                <p class="text-slate-400 text-sm mb-4 flex-grow">Created a static, SEO-optimized website for a trucking
-                  company. Designed service pages, company info, and contacts.</p>
-                <p class="text-xs font-semibold text-primary uppercase tracking-wider">React • Tailwind CSS • EmailJS
-                </p>
+                <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-sky-400 transition-colors">Transportation Truck Website</h3>
+                <p class="text-slate-400 text-xs flex-grow">Created a static, SEO-optimized website for a trucking company. Designed service pages & contact info.</p>
               </div>
             </div>
           </a>
 
           <a href="https://sharvaclinique.com/" target="_blank" class="block group">
-            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col">
-              <div
-                class="h-48 proj-thumb-4 flex items-center justify-center text-white text-2xl font-bold relative overflow-hidden">
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500"></div>
-                <span class="z-10 group-hover:scale-110 transition-transform duration-500 text-shadow">Clinic
-                  Site</span>
+            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col border border-white/10 shadow-sm hover:shadow-2xl">
+              <div class="h-52 proj-thumb-4 flex items-center justify-center text-white text-2xl font-serif-title relative overflow-hidden">
+                <span class="text-xs font-serif-title text-white/50 absolute top-4 left-6">04</span>
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-all duration-500"></div>
+                <span class="z-10 group-hover:scale-110 transition-transform duration-500 tracking-wider">Clinic Site</span>
               </div>
               <div class="p-6 flex-grow flex flex-col">
-                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Clinic Website
-                </h3>
-                <p class="text-slate-400 text-sm mb-4 flex-grow">A professional and responsive static, SEO-optimized
-                  website for a health clinic providing clear services.</p>
-                <p class="text-xs font-semibold text-primary uppercase tracking-wider">React • CSS • EmailJS</p>
+                <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-sky-400 transition-colors">Clinic Website</h3>
+                <p class="text-slate-400 text-xs flex-grow">A professional and responsive static, SEO-optimized website for a health clinic providing clear services.</p>
               </div>
             </div>
           </a>
 
           <a href="https://brightgroupfoundation.org/" target="_blank" class="block group">
-            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col">
-              <div
-                class="h-48 proj-thumb-5 flex items-center justify-center text-white text-2xl font-bold relative overflow-hidden">
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500"></div>
-                <span class="z-10 group-hover:scale-110 transition-transform duration-500 text-shadow">School
-                  Website</span>
+            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col border border-white/10 shadow-sm hover:shadow-2xl">
+              <div class="h-52 proj-thumb-5 flex items-center justify-center text-white text-2xl font-serif-title relative overflow-hidden">
+                <span class="text-xs font-serif-title text-white/50 absolute top-4 left-6">05</span>
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-all duration-500"></div>
+                <span class="z-10 group-hover:scale-110 transition-transform duration-500 tracking-wider">School Website</span>
               </div>
               <div class="p-6 flex-grow flex flex-col">
-                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">School Website
-                </h3>
-                <p class="text-slate-400 text-sm mb-4 flex-grow">Informational school profile with optimized
-                  architecture for SEO, ensuring mobile responsiveness.</p>
-                <p class="text-xs font-semibold text-primary uppercase tracking-wider">PHP • CSS</p>
+                <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-sky-400 transition-colors">School Website</h3>
+                <p class="text-slate-400 text-xs flex-grow">Informational school profile with optimized architecture for SEO, ensuring mobile responsiveness.</p>
               </div>
             </div>
           </a>
 
-          <a href="https://ourexperthelp.com/" target="_blank" class="block group">
-            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col">
-              <div
-                class="h-48 proj-thumb-6 flex items-center justify-center text-white text-2xl font-bold relative overflow-hidden">
-                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-500"></div>
-                <span class="z-10 group-hover:scale-110 transition-transform duration-500 text-shadow">Info Site</span>
+          <a href="https://effervescent-tiramisu-3ae989.netlify.app/" target="_blank" class="block group">
+            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col border border-white/10 shadow-sm hover:shadow-2xl">
+              <div class="h-52 proj-thumb-7 flex items-center justify-center text-white text-2xl font-serif-title relative overflow-hidden">
+                <span class="text-xs font-serif-title text-white/50 absolute top-4 left-6">06</span>
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-all duration-500"></div>
+                <span class="z-10 group-hover:scale-110 transition-transform duration-500 tracking-wider">Logistic</span>
               </div>
               <div class="p-6 flex-grow flex flex-col">
-                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">Informational
-                  Website</h3>
-                <p class="text-slate-400 text-sm mb-4 flex-grow">Developed an engaging layout for an informational brand
-                  presence, structured for fast loading speeds.</p>
-                <p class="text-xs font-semibold text-primary uppercase tracking-wider">PHP • CSS</p>
+                <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-sky-400 transition-colors">Logistics & Supply Chain Website</h3>
+                <p class="text-slate-400 text-xs flex-grow">Modern, SEO-friendly website designed for logistics and freight services with service overviews and inquiries.</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://remarkable-youtiao-5e95f9.netlify.app" target="_blank" class="block group">
+            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col border border-white/10 shadow-sm hover:shadow-2xl">
+              <div class="h-52 proj-thumb-8 flex items-center justify-center text-white text-2xl font-serif-title relative overflow-hidden">
+                <span class="text-xs font-serif-title text-white/50 absolute top-4 left-6">07</span>
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-all duration-500"></div>
+                <span class="z-10 group-hover:scale-110 transition-transform duration-500 tracking-wider">Dental Clinic</span>
+              </div>
+              <div class="p-6 flex-grow flex flex-col">
+                <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-sky-400 transition-colors">Dental Care Clinic Website</h3>
+                <p class="text-slate-400 text-xs flex-grow">Professional dental hospital website featuring doctor profiles, dental services, and online appointment booking.</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://scintillating-begonia-7c2361.netlify.app" target="_blank" class="block group">
+            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col border border-white/10 shadow-sm hover:shadow-2xl">
+              <div class="h-52 proj-thumb-9 flex items-center justify-center text-white text-2xl font-serif-title relative overflow-hidden">
+                <span class="text-xs font-serif-title text-white/50 absolute top-4 left-6">08</span>
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-all duration-500"></div>
+                <span class="z-10 group-hover:scale-110 transition-transform duration-500 tracking-wider">Skin Clinic</span>
+              </div>
+              <div class="p-6 flex-grow flex flex-col">
+                <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-sky-400 transition-colors">Dermatology & Skin Clinic Website</h3>
+                <p class="text-slate-400 text-xs flex-grow">Sleek and modern web presence for skincare specialists highlighting treatments, patient testimonials, and consultations.</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://fancy-boba-f57945.netlify.app" target="_blank" class="block group">
+            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col border border-white/10 shadow-sm hover:shadow-2xl">
+              <div class="h-52 proj-thumb-10 flex items-center justify-center text-white text-2xl font-serif-title relative overflow-hidden">
+                <span class="text-xs font-serif-title text-white/50 absolute top-4 left-6">09</span>
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-all duration-500"></div>
+                <span class="z-10 group-hover:scale-110 transition-transform duration-500 tracking-wider">General Clinic</span>
+              </div>
+              <div class="p-6 flex-grow flex flex-col">
+                <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-sky-400 transition-colors">General Healthcare Clinic Website</h3>
+                <p class="text-slate-400 text-xs flex-grow">Comprehensive medical clinic website providing health service information, patient care resources, and contact forms.</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://idyllic-sundae-7eed08.netlify.app" target="_blank" class="block group">
+            <div class="glass-card rounded-2xl overflow-hidden h-full flex flex-col border border-white/10 shadow-sm hover:shadow-2xl">
+              <div class="h-52 proj-thumb-11 flex items-center justify-center text-white text-2xl font-serif-title relative overflow-hidden">
+                <span class="text-xs font-serif-title text-white/50 absolute top-4 left-6">10</span>
+                <div class="absolute inset-0 bg-black/30 group-hover:bg-transparent transition-all duration-500"></div>
+                <span class="z-10 group-hover:scale-110 transition-transform duration-500 tracking-wider">Veterinary Clinic</span>
+              </div>
+              <div class="p-6 flex-grow flex flex-col">
+                <h3 class="text-lg font-bold text-slate-100 mb-2 group-hover:text-sky-400 transition-colors">Veterinary & Pet Care Hospital</h3>
+                <p class="text-slate-400 text-xs flex-grow">Warm and welcoming pet care website featuring veterinary services, emergency care details, and appointment booking.</p>
               </div>
             </div>
           </a>
 
         </div>
       </section>
+
+      <!-- Kind Words / Testimonials Section (Matching Reference Image) -->
+      <section id="testimonials" class="scroll-mt-20">
+        <h2 class="text-3xl md:text-5xl font-light text-center text-slate-100 mb-16 section-title">Kind Words</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <div class="glass-card p-8 rounded-2xl border border-white/10 relative flex flex-col justify-between">
+            <div class="font-serif-title text-5xl text-sky-400/30 leading-none mb-4">“</div>
+            <p class="text-xs text-slate-300 leading-relaxed mb-6 font-light italic">
+              "Rachana is incredibly talented, creative and detail-oriented. She transformed our business ideas into a beautiful, high-converting website."
+            </p>
+            <div>
+              <h4 class="text-sm font-bold text-slate-100">SOFIA L.</h4>
+              <p class="text-[11px] text-slate-400">FOUNDER, VELVET STUDIO</p>
+            </div>
+          </div>
+
+          <div class="glass-card p-8 rounded-2xl border border-white/10 relative flex flex-col justify-between">
+            <div class="font-serif-title text-5xl text-sky-400/30 leading-none mb-4">“</div>
+            <p class="text-xs text-slate-300 leading-relaxed mb-6 font-light italic">
+              "Working with Rachana was a smooth and inspiring experience. She truly cares about delivering the best code quality and design."
+            </p>
+            <div>
+              <h4 class="text-sm font-bold text-slate-100">DANIEL R.</h4>
+              <p class="text-[11px] text-slate-400">CEO, AURORA SHOP</p>
+            </div>
+          </div>
+
+          <div class="glass-card p-8 rounded-2xl border border-white/10 relative flex flex-col justify-between">
+            <div class="font-serif-title text-5xl text-sky-400/30 leading-none mb-4">“</div>
+            <p class="text-xs text-slate-300 leading-relaxed mb-6 font-light italic">
+              "Her web applications are not only visually stunning but also highly functional and lightning fast. I highly recommend her!"
+            </p>
+            <div>
+              <h4 class="text-sm font-bold text-slate-100">JAMES T.</h4>
+              <p class="text-[11px] text-slate-400">MARKETING DIRECTOR</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
     </div>
 
+    <!-- Services Layout Container -->
     <div id="serviceLayout" class="hidden-layout space-y-32">
 
       <!-- About Services Section -->
       <section id="about-service" class="pt-10 scroll-mt-20">
-        <h2 class="text-4xl font-bold text-center text-white mb-16 section-title">About Me & Services</h2>
-        <div class="glass-card max-w-3xl mx-auto p-10 md:p-12 rounded-3xl text-lg leading-relaxed text-center">
-          <div
-            class="w-20 h-20 mx-auto bg-gradient-to-tr from-blue-500 to-purple-500 rounded-full flex items-center justify-center mb-8 shadow-lg shadow-blue-500/30">
-            <i class="fas fa-rocket text-3xl text-white"></i>
+        <h2 class="text-3xl md:text-5xl font-light text-center text-slate-100 mb-16 section-title">About Me & Services</h2>
+        <div class="glass-card max-w-3xl mx-auto p-10 md:p-12 rounded-3xl text-base leading-relaxed text-center text-slate-300 border border-white/10 shadow-sm">
+          <div class="w-20 h-20 mx-auto bg-gradient-to-tr from-sky-500/20 to-indigo-500/40 rounded-full flex items-center justify-center mb-8 border border-sky-400/30 shadow-lg">
+            <i class="fas fa-rocket text-3xl text-sky-400"></i>
           </div>
-          <p class="mb-6">
-            I'm a passionate Full Stack Developer with hands-on experience in building end-to-end web applications. I
-            offer custom web development solutions tailored to strictly meet your business goals.
+          <p class="mb-6 font-light">
+            I'm a passionate Full Stack Developer with hands-on experience in building end-to-end web applications. I offer custom web development solutions tailored to strictly meet your business goals.
           </p>
-          <p>
-            Below are the services I provide. Feel free to <a href="#contact"
-              class="text-blue-400 hover:text-blue-300 font-semibold underline decoration-2 underline-offset-4 transition-colors">contact
-              me</a> for a quote or to discuss your specific project needs!
+          <p class="font-light">
+            Below are the services I provide. Feel free to <a href="#contact" class="text-sky-400 hover:text-sky-300 font-medium underline decoration-1 underline-offset-4 transition-colors">contact me</a> for a quote or to discuss your specific project needs!
           </p>
         </div>
       </section>
 
       <!-- Services Section -->
       <section id="services" class="scroll-mt-20">
-        <h2 class="text-4xl font-bold text-center text-white mb-16 section-title">What I Offer</h2>
+        <h2 class="text-3xl md:text-5xl font-light text-center text-slate-100 mb-16 section-title">What I Offer</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all">
-            <i class="fas fa-code text-4xl text-gradient mb-6 inline-block"></i>
-            <h3 class="text-2xl font-bold text-white mb-3">Frontend Development</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Responsive, accessible, and ultra-fast websites built with
-              modern frameworks like React.js and Next.js.</p>
+          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all border border-white/10">
+            <i class="fas fa-code text-3xl text-sky-400 mb-6 inline-block"></i>
+            <h3 class="text-xl font-serif-title text-slate-100 mb-3 uppercase tracking-wider">Frontend Development</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Responsive, accessible, and ultra-fast websites built with modern frameworks like React.js and Next.js.</p>
           </div>
 
-          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all">
-            <i class="fas fa-server text-4xl text-gradient-alt mb-6 inline-block text-cyan-400"></i>
-            <h3 class="text-2xl font-bold text-white mb-3">Backend & API</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Scalable server logic, authenticaton layers, and robust
-              REST APIs using Node.js, Express.js, and MongoDB.</p>
+          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all border border-white/10">
+            <i class="fas fa-server text-3xl text-sky-400 mb-6 inline-block"></i>
+            <h3 class="text-xl font-serif-title text-slate-100 mb-3 uppercase tracking-wider">Backend & API</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Scalable server logic, authentication layers, and robust REST APIs using Node.js, Express.js, and MongoDB.</p>
           </div>
 
-          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all">
-            <i class="fas fa-layer-group text-4xl text-indigo-400 mb-6 inline-block"></i>
-            <h3 class="text-2xl font-bold text-white mb-3">Full Stack Projects</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">End-to-end web application development taking your app
-              from the napkin concept all the way to deployment.</p>
+          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all border border-white/10">
+            <i class="fas fa-layer-group text-3xl text-sky-400 mb-6 inline-block"></i>
+            <h3 class="text-xl font-serif-title text-slate-100 mb-3 uppercase tracking-wider">Full Stack Projects</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">End-to-end web application development taking your app from concept all the way to deployment.</p>
           </div>
 
-          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all">
-            <i class="fas fa-chart-line text-4xl text-green-400 mb-6 inline-block"></i>
-            <h3 class="text-2xl font-bold text-white mb-3">SEO Optimization</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Faster load times and better Google rankings through
-              semantic HTML structure and SSR techniques.</p>
+          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all border border-white/10">
+            <i class="fas fa-chart-line text-3xl text-sky-400 mb-6 inline-block"></i>
+            <h3 class="text-xl font-serif-title text-slate-100 mb-3 uppercase tracking-wider">SEO Optimization</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Faster load times and better Google rankings through semantic HTML structure and SSR techniques.</p>
           </div>
 
-          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all">
-            <i class="fas fa-tools text-4xl text-orange-400 mb-6 inline-block"></i>
-            <h3 class="text-2xl font-bold text-white mb-3">Maintenance</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Ongoing reliable updates, performance improvements, bug
-              squashing, and support for your existing websites.</p>
+          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all border border-white/10">
+            <i class="fas fa-tools text-3xl text-sky-400 mb-6 inline-block"></i>
+            <h3 class="text-xl font-serif-title text-slate-100 mb-3 uppercase tracking-wider">Maintenance</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Ongoing reliable updates, performance improvements, bug squashing, and support for your existing websites.</p>
           </div>
 
-          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all">
-            <i class="fas fa-palette text-4xl text-pink-400 mb-6 inline-block"></i>
-            <h3 class="text-2xl font-bold text-white mb-3">UI/UX Revamps</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">Modernizing interfaces like we are doing right now,
-              creating user-friendly sleek designs tailored to your brand.</p>
+          <div class="glass-card p-8 rounded-2xl group hover:-translate-y-2 transition-all border border-white/10">
+            <i class="fas fa-palette text-3xl text-sky-400 mb-6 inline-block"></i>
+            <h3 class="text-xl font-serif-title text-slate-100 mb-3 uppercase tracking-wider">UI/UX Revamps</h3>
+            <p class="text-slate-400 text-xs leading-relaxed">Modernizing interfaces creating user-friendly sleek designs tailored to your brand.</p>
           </div>
 
         </div>
         <div class="text-center mt-16">
-          <a href="#contact"
-            class="btn-primary text-white font-medium py-4 px-10 rounded-full inline-block text-lg shadow-lg">
+          <a href="#contact" class="btn-primary text-white font-medium py-4 px-10 rounded-full inline-block text-sm tracking-wider uppercase">
             Request a Custom Quote
           </a>
         </div>
@@ -537,65 +732,78 @@
 
     </div>
 
+    <!-- Contact Section -->
     <section id="contact" class="py-32 scroll-mt-20">
-      <h2 class="text-4xl font-bold text-center text-white mb-6 section-title">Connect With Me</h2>
-      <p class="text-center text-slate-400 max-w-2xl mx-auto mb-16 text-lg">
-        Ready to start your next big project? Let's discuss your ideas and make them happen.
-      </p>
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl md:text-6xl font-serif-title text-slate-100 tracking-wide uppercase mb-3">
+          LET'S CREATE SOMETHING <br class="hidden sm:block"/> <span class="font-script text-sky-400 text-5xl sm:text-7xl lowercase font-normal">Amazing</span>
+        </h2>
+        <p class="text-slate-400 max-w-xl mx-auto text-sm font-light">
+          Ready to start your next big project? Let's discuss your ideas and make them happen.
+        </p>
+      </div>
 
       <div class="max-w-2xl mx-auto">
-        <div class="glass-card p-8 md:p-12 rounded-3xl">
+        <div class="glass-card p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl">
           <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" class="space-y-6">
             <input type="hidden" name="access_key" value="ac3bf936-7508-483d-9d68-9a654151e06e" />
+            <input type="hidden" name="subject" value="New Contact Form Submission from Portfolio" />
+            <input type="hidden" name="from_name" value="Rachana Portfolio" />
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="space-y-2">
-                <label for="name" class="text-sm font-medium text-slate-300 ml-1">Full Name</label>
-                <input type="text" id="name" name="name" required class="w-full px-5 py-3 rounded-xl"
+                <label for="name" class="text-xs uppercase tracking-widest font-medium text-slate-300 ml-1">Full Name</label>
+                <input type="text" id="name" name="name" required class="w-full px-5 py-3.5 rounded-xl text-sm"
                   placeholder="John Doe" />
               </div>
               <div class="space-y-2">
-                <label for="email" class="text-sm font-medium text-slate-300 ml-1">Email Address</label>
-                <input type="email" id="email" name="email" required class="w-full px-5 py-3 rounded-xl"
+                <label for="email" class="text-xs uppercase tracking-widest font-medium text-slate-300 ml-1">Email Address</label>
+                <input type="email" id="email" name="email" required class="w-full px-5 py-3.5 rounded-xl text-sm"
                   placeholder="john@example.com" />
               </div>
             </div>
 
             <div class="space-y-2">
-              <label for="message" class="text-sm font-medium text-slate-300 ml-1">Message</label>
-              <textarea id="message" rows="5" name="message" required class="w-full px-5 py-3 rounded-xl resize-none"
+              <label for="phone" class="text-xs uppercase tracking-widest font-medium text-slate-300 ml-1 flex items-center justify-between">
+                <span class="flex items-center"><i class="fab fa-whatsapp text-emerald-400 mr-1.5 text-sm"></i>WhatsApp Number</span>
+                <span class="text-[10px] font-normal text-slate-400">(Optional)</span>
+              </label>
+              <input type="tel" id="phone" name="phone" class="w-full px-5 py-3.5 rounded-xl text-sm"
+                placeholder="Enter phone number" />
+            </div>
+
+            <div class="space-y-2">
+              <label for="message" class="text-xs uppercase tracking-widest font-medium text-slate-300 ml-1">Message</label>
+              <textarea id="message" rows="5" name="message" required class="w-full px-5 py-3.5 rounded-xl text-sm resize-none"
                 placeholder="How can I help you?"></textarea>
             </div>
 
-            <button type="submit"
-              class="w-full btn-primary font-bold text-white py-4 rounded-xl mt-2 flex justify-center items-center gap-2 text-lg">
-              Send Message <i class="fas fa-paper-plane text-sm"></i>
+            <button type="submit" id="submitBtn"
+              class="w-full btn-primary font-bold text-white py-4 rounded-xl mt-2 flex justify-center items-center gap-2 text-sm uppercase tracking-widest">
+              Send Message <i class="fas fa-paper-plane text-xs ml-1"></i>
             </button>
+            <div id="formStatus" class="hidden text-center text-sm font-medium p-3 rounded-xl"></div>
           </form>
         </div>
 
-        <div class="mt-16 text-center">
-          <p class="text-slate-400 mb-6">Or reach out directly via</p>
-          <div class="flex justify-center gap-4 mb-8">
+        <div class="mt-16 text-center space-y-6">
+          <p class="text-xs uppercase tracking-widest text-slate-400">Or reach out directly via</p>
+          <div class="flex justify-center gap-4">
             <a href="mailto:249rachanameena@gmail.com"
-              class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-white hover:text-primary transition-colors group">
-              <i class="fas fa-envelope text-xl group-hover:scale-110 transition-transform"></i>
+              class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-sky-400 border border-white/10 transition-all group shadow-md">
+              <i class="fas fa-envelope text-lg group-hover:scale-110 transition-transform"></i>
             </a>
-            <a href="https://www.linkedin.com/in/rachana-meena-785387195/"
-              class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-white hover:text-blue-500 transition-colors group">
-              <i class="fab fa-linkedin-in text-xl group-hover:scale-110 transition-transform"></i>
+            <a href="https://www.linkedin.com/in/rachana-meena-785387195/" target="_blank"
+              class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-sky-400 border border-white/10 transition-all group shadow-md">
+              <i class="fab fa-linkedin-in text-lg group-hover:scale-110 transition-transform"></i>
             </a>
-            <a href="https://github.com/robio11"
-              class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-white hover:text-slate-100 transition-colors group">
-              <i class="fab fa-github text-xl group-hover:scale-110 transition-transform"></i>
-            </a>
-            <a href="tel:+917424810784"
-              class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-white hover:text-green-500 transition-colors group">
-              <i class="fas fa-phone text-xl group-hover:scale-110 transition-transform"></i>
+            <a href="https://github.com/robio11" target="_blank"
+              class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-slate-300 hover:text-sky-400 border border-white/10 transition-all group shadow-md">
+              <i class="fab fa-github text-lg group-hover:scale-110 transition-transform"></i>
             </a>
           </div>
-          <div class="inline-block glass-panel px-6 py-3 rounded-full text-sm text-slate-300">
-            <span class="text-white font-medium">Email:</span> 249rachanameena@gmail.com
+          <div class="inline-block glass-panel px-6 py-3 rounded-full text-xs text-slate-400 tracking-wider">
+            <span class="text-slate-200 font-semibold">Email:</span> 249rachanameena@gmail.com
           </div>
         </div>
       </div>
@@ -603,11 +811,30 @@
 
   </main>
 
-  <footer class="border-t border-white/5 mt-10 py-10">
-    <div
-      class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-500 text-sm">
-      <p>&copy; <span id="year">2024</span> Rachana Meena. All rights reserved.</p>
-      <p class="font-medium tracking-wide">Full Stack Developer</p>
+  <!-- Top-Right Floating Toast Notification -->
+  <div id="toastNotify" class="fixed top-6 right-6 z-[100] max-w-sm w-full bg-slate-900/95 backdrop-blur-md rounded-2xl shadow-2xl border border-white/10 p-4 overflow-hidden transform translate-x-full opacity-0 pointer-events-none transition-all duration-500 ease-out">
+    <div class="flex items-start gap-3">
+      <div id="toastIconBg" class="w-10 h-10 rounded-xl flex items-center justify-center shrink-0">
+        <i id="toastIcon" class="text-xl"></i>
+      </div>
+      <div class="flex-grow pt-0.5">
+        <h4 id="toastTitle" class="text-sm font-bold text-slate-100 leading-tight mb-1"></h4>
+        <p id="toastDesc" class="text-xs text-slate-400 leading-relaxed"></p>
+      </div>
+      <button id="closeToast" class="text-slate-400 hover:text-white p-1 transition-colors">
+        <i class="fas fa-times text-sm"></i>
+      </button>
+    </div>
+    <!-- Progress Bar Line -->
+    <div class="w-full bg-white/10 h-1 rounded-full mt-3 overflow-hidden">
+      <div id="toastProgress" class="h-full w-full"></div>
+    </div>
+  </div>
+
+  <footer class="border-t border-white/10 mt-10 py-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-xs tracking-wider uppercase">
+      <p>&copy; <span id="year">2026</span> Rachana Meena. All rights reserved.</p>
+      <p class="font-serif-title tracking-widest text-slate-300">THANK YOU FOR VISITING ✦</p>
     </div>
   </footer>
 
@@ -620,8 +847,8 @@
     const heroWorkBtn = document.getElementById("heroWorkBtn");
 
     // Active state classes for the buttons
-    const btnActiveClasses = ['bg-primary/80', 'text-white', 'shadow-[0_0_15px_rgba(59,130,246,0.4)]'];
-    const btnInactiveClasses = ['text-slate-300', 'hover:text-white', 'hover:bg-white/10', 'bg-transparent'];
+    const btnActiveClasses = ['bg-sky-500', 'text-slate-950', 'shadow-md'];
+    const btnInactiveClasses = ['text-slate-300', 'hover:text-white', 'hover:bg-white/5', 'bg-transparent'];
 
     const setBtnActive = (btn) => {
       btn.classList.add(...btnActiveClasses);
@@ -651,7 +878,7 @@
       heroWorkBtn.setAttribute('href', '#services');
     });
 
-    // Smooth scrolling for anchor links (safeguard, though Tailwind scroll-smooth handles most)
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener("click", function (e) {
         e.preventDefault();
@@ -664,12 +891,106 @@
       });
     });
 
-    // Form submission mock
+    // Top-Right Toast Notification Controller
+    const toastNotify = document.getElementById("toastNotify");
+    const toastIconBg = document.getElementById("toastIconBg");
+    const toastIcon = document.getElementById("toastIcon");
+    const toastTitle = document.getElementById("toastTitle");
+    const toastDesc = document.getElementById("toastDesc");
+    const toastProgress = document.getElementById("toastProgress");
+    const closeToast = document.getElementById("closeToast");
+    let toastTimer = null;
+
+    const showToast = (type, title, desc) => {
+      clearTimeout(toastTimer);
+
+      if (type === 'success') {
+        toastIconBg.className = "w-10 h-10 rounded-xl flex items-center justify-center shrink-0 bg-emerald-950/80 text-emerald-400 border border-emerald-500/30 shadow-sm";
+        toastIcon.className = "fas fa-check-circle text-xl text-emerald-400";
+        toastProgress.className = "h-full bg-emerald-500 w-full transition-all duration-[4000ms] ease-linear";
+      } else {
+        toastIconBg.className = "w-10 h-10 rounded-xl flex items-center justify-center shrink-0 bg-rose-950/80 text-rose-400 border border-rose-500/30 shadow-sm";
+        toastIcon.className = "fas fa-circle-xmark text-xl text-rose-400";
+        toastProgress.className = "h-full bg-rose-500 w-full transition-all duration-[4000ms] ease-linear";
+      }
+
+      toastTitle.textContent = title;
+      toastDesc.textContent = desc;
+
+      // Reset progress bar width instantly
+      toastProgress.style.transition = 'none';
+      toastProgress.style.width = '100%';
+
+      // Slide in toast from top-right
+      toastNotify.classList.remove("translate-x-full", "opacity-0", "pointer-events-none");
+
+      // Animate progress bar to 0% over 4 seconds
+      setTimeout(() => {
+        toastProgress.style.transition = 'width 4000ms linear';
+        toastProgress.style.width = '0%';
+      }, 50);
+
+      // Auto dismiss automatically after 4 seconds
+      toastTimer = setTimeout(() => {
+        hideToast();
+      }, 4000);
+    };
+
+    const hideToast = () => {
+      toastNotify.classList.add("translate-x-full", "opacity-0", "pointer-events-none");
+    };
+
+    closeToast.addEventListener("click", hideToast);
+
+    // Worldwide Phone Input Initialization with Country Flags & Codes
+    const phoneInput = document.querySelector("#phone");
+    const iti = window.intlTelInput(phoneInput, {
+      initialCountry: "in",
+      separateDialCode: true,
+      preferredCountries: ["in", "us", "gb", "ae", "ca", "au"],
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
+    });
+
+    // Form submission handling via Web3Forms API
     const contactForm = document.getElementById("contactForm");
+    const submitBtn = document.getElementById("submitBtn");
+
     contactForm.addEventListener("submit", function (e) {
-      // e.preventDefault(); // Un-comment to prevent actual Web3Forms submission for testing
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
+      e.preventDefault();
+      
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin text-xs ml-1"></i>';
+
+      const formData = new FormData(contactForm);
+
+      // Append formatted full international phone number with country dial code
+      if (phoneInput.value.trim() !== "") {
+        const fullNumber = iti.getNumber();
+        const countryData = iti.getSelectedCountryData();
+        const formattedNum = fullNumber ? fullNumber : `+${countryData.dialCode} ${phoneInput.value.trim()}`;
+        formData.set("phone", formattedNum);
+      }
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status === 200) {
+          showToast('success', 'Message Sent!', 'Your message has been sent successfully.');
+          contactForm.reset();
+        } else {
+          showToast('error', 'Submission Failed', json.message || 'Something went wrong. Please try again.');
+        }
+      })
+      .catch((error) => {
+        showToast('error', 'Network Error', 'Check your connection and try again.');
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane text-xs ml-1"></i>';
+      });
     });
 
     // Set current year in footer
